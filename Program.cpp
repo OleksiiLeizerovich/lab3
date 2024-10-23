@@ -1,7 +1,12 @@
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
+
+double distance(double x1, double y1, double x2, double y2) {
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
 
 double Find_P(double a, double b, double c)
 {
@@ -18,11 +23,14 @@ void Find_S(double a, double b, double c)
 
 int main()
 {
+    setlocale(LC_ALL, "uk_UA.UTF-8");
     cout << setprecision(2) << fixed;
-    double a, b, c;
-    cout << "Enter the lengths of three sides of the triangle: ";
-    while (a <= 0 || b <= 0 || c <= 0)
-        cin >> a >> b >> c;
+    double x1, y1, x2, y2, x3, y3;
+    cout << "Введіть координати сторін трикутника: ";
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+    double a = distance(x1, y1, x2, y2);
+    double b = distance(x2, y2, x3, y3);
+    double c = distance(x1, y1, x3, y3);
     Find_S(a, b, c);
     return 0;
 }
